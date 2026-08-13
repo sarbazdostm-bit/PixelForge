@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎨 مولد هنر پیکسلی</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: radial-gradient(ellipse at 50% 30%, #1a1a2e, #0a0a12);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 20px;
+    }
+    .app {
+      max-width: 880px; width: 100%;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      border-radius: 40px;
+      padding: 28px 28px 32px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .header h1 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #feca57, #ff9ff3, #48dbfb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header h1 span { font-size: 28px; -webkit-text-fill-color: initial; }
+    .header-info {
+      color: rgba(255,255,255,0.4);
+      font-size: 13px;
+      background: rgba(255,255,255,0.05);
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.06);
+      font-feature-settings: "tnum";
+      direction: ltr;
+    }
+    .canvas-wrapper {
+      background: rgba(0,0,0,0.5);
+      border-radius: 24px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: inset 0 4px 30px rgba(0,0,0,0.6);
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: attr(width) / attr(height);
+      border-radius: 16px;
+      background: #111;
+      image-rendering: pixelated;
+      max-width: 100%;
+      max-height: 70vh;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .controls-row {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn {
+      padding: 10px 28px;
+      font-size: 15px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .btn:active {
+      transform: scale(0.95);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #feca57, #fdcb6e);
+      border-color: #feca57;
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+    .btn.primary:hover {
+      background: linear-gradient(135deg, #ffd93d, #feca57);
+      border-color: #ffd93d;
+      box-shadow: 0 0 40px rgba(254,202,87,0.3);
+    }
+    .btn.success {
+      border-color: #2ecc71;
+      color: #2ecc71;
+    }
+    .btn.success:hover {
+      background: #2ecc71;
+      color: #0f0f1a;
+      border-color: #2ecc71;
+    }
+    .btn.reroll {
+      border-color: #9b59b6;
+      color: #9b59b6;
+    }
+    .btn.reroll:hover {
+      background: #9b59b6;
+      color: #0f0f1a;
+      border-color: #9b59b6;
+    }
+    .btn.copy-btn {
+      border-color: #3498db;
+      color: #3498db;
+    }
+    .btn.copy-btn:hover {
+      background: #3498db;
+      color: #0f0f1a;
+      border-color: #3498db;
+    }
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.03);
+      padding: 4px 14px 4px 12px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
+    .control-group select {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 5px 10px 5px 6px;
+      border-radius: 30px;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+      font-weight: 500;
+      min-width: 65px;
+    }
+    .control-group select option {
+      background: #1a1a2e;
+      color: #fff;
+    }
+    .control-group select optgroup {
+      background: #1a1a2e;
+      color: #feca57;
+      font-weight: 600;
+    }
+    .control-group select:focus { border-color: #feca57; }
+
+    .row-style-palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .row-dimensions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .row-dimensions .control-group label {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .row-dimensions .control-group select {
+      min-width: 50px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      color: rgba(255,255,255,0.2);
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer .seed {
+      font-feature-settings: "tnum";
+      direction: ltr;
+      background: rgba(255,255,255,0.03);
+      padding: 3px 12px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer .shortcuts {
+      direction: ltr;
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    @media (max-width:700px) {
+      .app { padding:16px; border-radius:24px; }
+      .header h1 { font-size:18px; }
+      .btn { padding:8px 14px; font-size:12px; }
+      .control-group { padding:4px 10px 4px 8px; }
+      .canvas-wrapper { padding:6px; }
+      canvas { border-radius:12px; }
+      .controls-row { flex-wrap: wrap; }
+    }
+    @media (max-width:480px) {
+      .app { padding:10px; }
+      .header h1 { font-size:16px; }
+      .btn { padding:6px 10px; font-size:11px; }
+      .control-group select { font-size:11px; padding:3px 6px; min-width:40px; }
+      .control-group { padding:3px 8px; }
+      .controls-row { flex-wrap: wrap; }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="app">
+   <!-- هدر -->
+   <div class="header">
+    <h1><span>✨</span> مولد هنر پیکسلی</h1>
+    <div class="header-info" id="stats">۳۰۰×۳۰۰ · ۲px</div>
+   </div>
+   <!-- بوم نقاشی -->
+   <div class="canvas-wrapper">
+    <canvas id="canvas" width="600" height="600"></canvas>
+   </div>
+   <!-- کنترل‌ها -->
+   <div class="controls">
+    <!-- ===== ردیف اول: دکمه‌های اصلی (یک ردیف) ===== -->
+    <div class="controls-row">
+     <button class="btn primary" id="generateBtn">🎨 تولید</button>
+     <button class="btn reroll" id="rerollBtn">🎲 تصادفی</button>
+     <button class="btn copy-btn" id="copyPromptBtn">📋 پرامپت</button>
+     <button class="btn success" id="exportBtn">💾 ذخیره</button>
+    </div>
+    <!-- ===== ردیف دوم: سبک + پالت ===== -->
+    <div class="row-style-palette">
+     <div class="control-group">
+      <select id="styleSelect"> <option value="random">🌀 تصادفی</option> <optgroup label="〰️ موجی"> <option value="wave_sin">〰️ سینوسی</option> <option value="wave_triangle">🔺 مثلثی</option> <option value="wave_square">⬛ مربعی</option> <option value="wave_sawtooth">🪚 دندانه‌ای</option> <option value="wave_pulse">⚡ پالس</option> <option value="wave_combined">🌀 ترکیبی</option> </optgroup> <optgroup label="🔷 هندسی"> <option value="geo_circle">⭕ دایره</option> <option value="geo_rect">▬ مستطیل</option> <option value="geo_triangle">△ مثلث</option> <option value="geo_hexagon">⬡ شش‌ضلعی</option> <option value="geo_star">★ ستاره</option> <option value="geo_ellipse">⬮ بیضی</option> <option value="geo_diamond">◇ لوزی</option> <option value="geo_polygon">⬠ چندضلعی</option> <option value="geo_combined">🔶 ترکیبی</option> </optgroup> <optgroup label="🌿 فراکتال"> <option value="fractal_tree">🌳 درخت کلاسیک</option> <option value="fractal_pitie">🌿 درخت پیتی</option> <option value="fractal_koch">❄️ برف‌دانه کخ</option> <option value="fractal_sierpinski">🔺 مثلث سرپینسکی</option> <option value="fractal_combined">🌀 فراکتال ترکیبی</option> </optgroup> <optgroup label="🎨 سایر"> <option value="noise">📡 نویز</option> <option value="tiles">🧩 کاشی</option> <option value="gradient">🌈 گرادیان</option> <option value="abstract">🎭 انتزاعی</option> </optgroup> <optgroup label="🌳 طبیعت"> <option value="nature_tree">🌳 درخت کلاسیک</option> <option value="nature_forest">🌲 جنگل</option> </optgroup> <optgroup label="👻 ویژه"> <option value="sacred_random">🔮 نمادها</option> <option value="horror">👻 ترسناک</option> <option value="masonic">👁️ فراماسونری</option> </optgroup> </select>
+     </div>
+     <div class="control-group">
+      <select id="paletteSelect"> <option value="random">🌈 تصادفی</option> <option value="sunset">🌅 غروب</option> <option value="ocean">🌊 اقیانوس</option> <option value="forest">🌲 جنگل</option> <option value="neon">💡 نئون</option> <option value="pastel">🌸 پاستل</option> <option value="mono">⚫ تک‌رنگ</option> <option value="vintage">🕰️ قدیمی</option> <option value="dark">🌑 دارک</option> </select>
+     </div>
+    </div>
+    <!-- ===== ردیف سوم: عرض + ارتفاع + پیکسل ===== -->
+    <div class="row-dimensions">
+     <div class="control-group">
+      <label>عرض</label> <select id="gridWidthSelect"> <option value="10">۱۰</option> <option value="20">۲۰</option> <option value="30">۳۰</option> <option value="50">۵۰</option> <option value="80">۸۰</option> <option value="100">۱۰۰</option> <option value="150">۱۵۰</option> <option value="200">۲۰۰</option> <option value="250">۲۵۰</option> <option value="300" selected>۳۰۰</option> <option value="350">۳۵۰</option> <option value="400">۴۰۰</option> </select>
+     </div>
+     <div class="control-group">
+      <label>ارتفاع</label> <select id="gridHeightSelect"> <option value="10">۱۰</option> <option value="20">۲۰</option> <option value="30">۳۰</option> <option value="50">۵۰</option> <option value="80">۸۰</option> <option value="100">۱۰۰</option> <option value="150">۱۵۰</option> <option value="200">۲۰۰</option> <option value="250">۲۵۰</option> <option value="300" selected>۳۰۰</option> <option value="350">۳۵۰</option> <option value="400">۴۰۰</option> </select>
+     </div>
+     <div class="control-group">
+      <label>پیکسل</label> <select id="pixelSizeSelect"> <option value="1">۱</option> <option value="2" selected>۲</option> <option value="3">۳</option> <option value="4">۴</option> <option value="5">۵</option> </select>
+     </div>
+    </div>
+   </div>
+   <!-- فوتر -->
+   <div class="footer">
+    <span class="seed">seed: <span id="seedDisplay">0</span></span> <span id="algoName">الگوریتم: تصادفی</span> <span class="shortcuts">[Space] تولید [R] دوباره [S] ذخیره</span>
+   </div>
+  </div>
+  <!-- ===== Textarea مخفی برای نگهداری پرامپت ===== -->
+  <textarea id="promptText" style="display:none;"></textarea> <!-- فایل‌های جاوااسکریپت -->
+  <script src="js/mst1.js"></script>
+  <script src="js/mst2.js"></script>
+  <script src="js/mst3.js"></script>
+  <script src="js/mst4.js"></script>
+  <script src="js/mst5.js"></script>
+  <script src="js/mst6.js"></script>
+  <script src="js/mst7.js"></script>
+  <script src="js/mst8.js"></script>
+  <script src="js/mst9.js"></script>
+  <script src="js/mst11.js"></script>
+  <script src="js/mst12.js"></script>
+  <script src="js/mst13.js"></script>
+  <script src="js/mst10.js"></script>
+ </body>
+</html>
