@@ -5,7 +5,11 @@
 PixelForge یک اپلیکیشن اندروید برای تولید خودکار تصاویر پیکسلی با استفاده از الگوریتم‌های متنوع است. این برنامه کاملاً آفلاین کار می‌کند و به شما امکان می‌دهد تا با انتخاب سبک، پالت رنگی و ابعاد دلخواه، آثار هنری پیکسلی خلق کنید.
 
 ---
-![نمونه خروجی برنامه](https://github.com/sarbazdostm-bit/PixelForge/raw/main/Screenshot_%DB%B2%DB%B0%DB%B2%DB%B6-%DB%B0%DB%B8-%DB%B1%DB%B4-%DB%B1%DB%B1-%DB%B1%DB%B1-%DB%B4%DB%B2-%DB%B7%DB%B8%DB%B9_com.example.pixelart.jpg)
+![نمونه خروجی ۱](https://github.com/sarbazdostm-bit/PixelForge/raw/main/Screenshot_%DB%B2%DB%B0%DB%B2%DB%B6-%DB%B0%DB%B8-%DB%B1%DB%B4-%DB%B1%DB%B1-%DB%B1%DB%B1-%DB%B4%DB%B2-%DB%B7%DB%B8%DB%B9_com.example.pixelart.jpg)
+
+![نمونه خروجی ۲](https://github.com/sarbazdostm-bit/PixelForge/raw/main/Screenshot_%DB%B2%DB%B0%DB%B2%DB%B6-%DB%B0%DB%B8-%DB%B1%DB%B4-%DB%B1%DB%B1-%DB%B1%DB%B6-%DB%B5%DB%B6-%DB%B3%DB%B9%DB%B9_com.example.pixelart.jpg)
+
+![نمونه خروجی ۳](https://github.com/sarbazdostm-bit/PixelForge/raw/main/Screenshot_%DB%B2%DB%B0%DB%B2%DB%B6-%DB%B0%DB%B8-%DB%B1%DB%B4-%DB%B1%DB%B1-%DB%B1%DB%B7-%DB%B0%DB%B7-%DB%B7%DB%B6%DB%B4_com.example.pixelart.jpg)
 ---
 
 ## ✨ ویژگی‌های اصلی
