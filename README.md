@@ -103,3 +103,13 @@ PixelForge یک اپلیکیشن اندروید برای تولید خودکار
 1. مخزن را Clone کنید:
    ```bash
    git clone https://github.com/sarbazdostm-bit/PixelForge.git
+
+## 🤝 مشارکت
+
+از مشارکت شما خوشحال می‌شویم! برای کمک به توسعه PixelForge مراحل زیر را دنبال کنید:
+
+1. این ریپو را **Fork** کنید.
+2. یک شاخه جدید برای ویژگی یا رفع باگ خود بسازید:
+   ```bash
+   git checkout -b feature/نام-ویژگی
+   
