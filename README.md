@@ -1,3 +1,11 @@
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Android](https://img.shields.io/badge/Android-5.0%2B-brightgreen)
+![Build](https://img.shields.io/badge/build-passing-success)
+![Language](https://img.shields.io/badge/Java-20.8%25-orange)
+![JavaScript](https://img.shields.io/badge/JavaScript-71.7%25-yellow)
+![Stars](https://img.shields.io/github/stars/sarbazdostm-bit/PixelForge?style=social)
+
 ## 📑 فهرست مطالب
 - [ویژگی‌های اصلی](#-ویژگی‌های-اصلی)
 - [پالت‌های رنگی](#-پالت‌های-رنگی-۸-پالت)
@@ -6,10 +14,11 @@
 - [تکنولوژی‌ها](#-تکنولوژی‌های-استفاده-شده)
 - [نصب و اجرا](#-نصب-و-اجرا)
 - [مشارکت](#-مشارکت)
-- [نقشه راه](#-نقشه-راه)
 - [مجوز](#-مجوز)
 
 
+## 💡 پیشنهادات
+اگر ایده یا پیشنهادی برای بهبود این پروژه دارید، در بخش [Issues](https://github.com/sarbazdostm-bit/PixelForge/issues) مطرح کنید. خوشحال می‌شوم بشنوم.
 
 # 🎨 PixelForge
 
@@ -113,3 +122,18 @@ PixelForge یک اپلیکیشن اندروید برای تولید خودکار
    ```bash
    git checkout -b feature/نام-ویژگی
    
+## 📄 مجوز
+
+این پروژه تحت مجوز **MIT** منتشر شده است. برای اطلاعات بیشتر، فایل [LICENSE](LICENSE) را مشاهده کنید.
+
+
+---
+
+**پس برای پروژه خودتان:**
+- مجوز MIT برای پروژه‌های اوپن‌سورس عالی است.
+- نیازی به تغییر آن ندارید.
+- کاربران می‌توانند از کد شما استفاده کنند، اما حق کپی‌رایت شما را حفظ کنند.
+- شما هیچ مسئولیتی در قبال استفاده دیگران ندارید.
+
+
+
